@@ -15,7 +15,7 @@ import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
-public class BeaconHaloRenderer {
+public class BeaconHaloRenderHandler {
 
     public static void renderBeaconHalo(BeaconBlockEntity blockEntity,
                                        float partialTick,
@@ -26,12 +26,15 @@ public class BeaconHaloRenderer {
         Vec3 circleCenter = new Vec3(blockEntity.getBlockPos().getX(), 256, blockEntity.getBlockPos().getZ());
         Vec3 cameraPos = Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();
 
-        // TODO: 从配置文件读取颜色设置
-        float red = Color.WHITE.getRed() / 255.0f;
-        float green = Color.WHITE.getGreen() / 255.0f;
-        float blue = Color.WHITE.getBlue() / 255.0f;
+        // 计算颜色
+        // 根据游戏时间计算动态颜色
+        float[] haloColor = calculateTimeBasedColor(blockEntity);
+        float red = haloColor[0];
+        float green = haloColor[1];
+        float blue = haloColor[2];
         float alpha = 0.85f;
-        
+
+        // 水下雾化效果
         float underwaterFogFactor = calculateUnderwaterFogFactor(cameraPos, circleCenter);
         alpha *= underwaterFogFactor;
 
@@ -146,5 +149,57 @@ public class BeaconHaloRenderer {
         }
         
         return startPos.getY(); // 找不到水面，返回原始高度
+    }
+
+    /**
+     * 根据游戏时间计算光环颜色
+     * 正午为白色，午夜为淡蓝色，平滑渐变
+     * @param blockEntity 信标方块实体
+     * @return RGB颜色数组 [r, g, b]
+     */
+    private static float[] calculateTimeBasedColor(BeaconBlockEntity blockEntity) {
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.level == null) {
+            return new float[]{1.0f, 1.0f, 1.0f}; // 默认白色
+        }
+
+        // 获取游戏时间（一天 = 24000 刻）
+        long worldTime = mc.level.getDayTime();
+        long dayTime = worldTime % 24000L; // 获取当天时间
+
+        // 定义颜色关键点
+        // 正午 (6000 刻): 白色
+        float noonRed = 1.0f, noonGreen = 1.0f, noonBlue = 1.0f;
+        // 午夜 (18000 刻): 淡蓝色
+        float midnightRed = 0.7f, midnightGreen = 0.8f, midnightBlue = 1.0f;
+
+        // 计算时间因子 (0.0 - 1.0)
+        // 使用余弦函数创建平滑的昼夜循环
+        double timeRadians = (dayTime / 24000.0) * 2.0 * Math.PI;
+        
+        // 将时间映射到颜色插值因子
+        // cos(0) = 1 (正午), cos(π) = -1 (午夜)
+        double cosineTime = Math.cos(timeRadians - Math.PI / 2.0); // 偏移π/2使正午为峰值
+        
+        // 将 [-1, 1] 映射到 [0, 1]，其中0为午夜，1为正午
+        float interpolationFactor = (float) ((cosineTime + 1.0) / 2.0);
+        
+        // 线性插值计算最终颜色
+        float red = lerp(midnightRed, noonRed, interpolationFactor);
+        float green = lerp(midnightGreen, noonGreen, interpolationFactor);
+        float blue = lerp(midnightBlue, noonBlue, interpolationFactor);
+
+        return new float[]{red, green, blue};
+    }
+
+    /**
+     * 线性插值函数
+     * @param start 起始值
+     * @param end 结束值
+     * @param factor 插值因子 (0.0 - 1.0)
+     * @return 插值结果
+     */
+    private static float lerp(float start, float end, float factor) {
+        return start + (end - start) * factor;
     }
 } 

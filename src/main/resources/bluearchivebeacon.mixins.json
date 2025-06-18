@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.littlebai.bluearchivebeacon.mixin",
+  "package": "net.littlebai.bluearchivebeacon.client.mixin",
   "compatibilityLevel": "JAVA_8",
   "refmap": "bluearchivebeacon.refmap.json",
   "mixins": [
