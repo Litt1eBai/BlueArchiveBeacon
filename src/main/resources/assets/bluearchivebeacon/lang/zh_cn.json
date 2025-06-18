@@ -1,1 +1,34 @@
-{}
+{
+    "configuration.bluearchivebeacon.enableRendering": "启用渲染",
+    "configuration.bluearchivebeacon.enableRendering.comment": "是否启用光环渲染",
+    
+    "configuration.bluearchivebeacon.haloColorMode": "光环颜色模式",
+    "configuration.bluearchivebeacon.haloColorMode.comment": "光环颜色模式",
+    "configuration.bluearchivebeacon.haloColorMode.ba_style": "蔚蓝档案风格",
+    "configuration.bluearchivebeacon.haloColorMode.fixed": "固定颜色",
+    "configuration.bluearchivebeacon.haloColorMode.follow_beacon": "跟随信标光柱",
+    
+    "configuration.bluearchivebeacon.fixedColorRed": "固定颜色红色分量",
+    "configuration.bluearchivebeacon.fixedColorRed.comment": "固定颜色模式下的红色分量 (0-255)",
+    
+    "configuration.bluearchivebeacon.fixedColorGreen": "固定颜色绿色分量",
+    "configuration.bluearchivebeacon.fixedColorGreen.comment": "固定颜色模式下的绿色分量 (0-255)",
+    
+    "configuration.bluearchivebeacon.fixedColorBlue": "固定颜色蓝色分量",
+    "configuration.bluearchivebeacon.fixedColorBlue.comment": "固定颜色模式下的蓝色分量 (0-255)",
+    
+    "configuration.bluearchivebeacon.haloCountMode": "光环数量模式",
+    "configuration.bluearchivebeacon.haloCountMode.comment": "光环数量模式",
+    "configuration.bluearchivebeacon.haloCountMode.fixed": "固定数量",
+    "configuration.bluearchivebeacon.haloCountMode.custom": "自定义数量",
+    "configuration.bluearchivebeacon.haloCountMode.follow_level": "跟随信标等级",
+    
+    "configuration.bluearchivebeacon.customHaloCount": "自定义光环数量",
+    "configuration.bluearchivebeacon.customHaloCount.comment": "自定义模式下的光环数量",
+    
+    "configuration.bluearchivebeacon.baseRadius": "基础半径",
+    "configuration.bluearchivebeacon.baseRadius.comment": "光环基础半径",
+    
+    "configuration.bluearchivebeacon.groupInterval": "组间距",
+    "configuration.bluearchivebeacon.groupInterval.comment": "光环组间距"
+}

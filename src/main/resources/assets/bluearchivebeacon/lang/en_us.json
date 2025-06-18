@@ -1,1 +1,34 @@
-{}
+{
+    "configuration.bluearchivebeacon.enableRendering": "Enable Rendering",
+    "configuration.bluearchivebeacon.enableRendering.comment": "Whether to enable halo rendering",
+    
+    "configuration.bluearchivebeacon.haloColorMode": "Halo Color Mode",
+    "configuration.bluearchivebeacon.haloColorMode.comment": "Halo color mode",
+    "configuration.bluearchivebeacon.haloColorMode.ba_style": "Blue Archive Style",
+    "configuration.bluearchivebeacon.haloColorMode.fixed": "Fixed Color",
+    "configuration.bluearchivebeacon.haloColorMode.follow_beacon": "Follow Beacon Beam",
+    
+    "configuration.bluearchivebeacon.fixedColorRed": "Fixed Color Red",
+    "configuration.bluearchivebeacon.fixedColorRed.comment": "Red component for fixed color mode (0-255)",
+    
+    "configuration.bluearchivebeacon.fixedColorGreen": "Fixed Color Green",
+    "configuration.bluearchivebeacon.fixedColorGreen.comment": "Green component for fixed color mode (0-255)",
+    
+    "configuration.bluearchivebeacon.fixedColorBlue": "Fixed Color Blue",
+    "configuration.bluearchivebeacon.fixedColorBlue.comment": "Blue component for fixed color mode (0-255)",
+    
+    "configuration.bluearchivebeacon.haloCountMode": "Halo Count Mode",
+    "configuration.bluearchivebeacon.haloCountMode.comment": "Halo count mode",
+    "configuration.bluearchivebeacon.haloCountMode.fixed": "Fixed Count",
+    "configuration.bluearchivebeacon.haloCountMode.custom": "Custom Count",
+    "configuration.bluearchivebeacon.haloCountMode.follow_level": "Follow Beacon Level",
+    
+    "configuration.bluearchivebeacon.customHaloCount": "Custom Halo Count",
+    "configuration.bluearchivebeacon.customHaloCount.comment": "Number of halos for custom mode",
+    
+    "configuration.bluearchivebeacon.baseRadius": "Base Radius",
+    "configuration.bluearchivebeacon.baseRadius.comment": "Base radius for halos",
+    
+    "configuration.bluearchivebeacon.groupInterval": "Group Interval",
+    "configuration.bluearchivebeacon.groupInterval.comment": "Interval between halo groups"
+}
