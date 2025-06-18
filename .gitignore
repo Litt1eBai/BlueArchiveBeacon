@@ -1,6 +1,7 @@
 # User-specific stuff
 .idea/
 .eclipse/
+.vscode/
 
 *.iml
 *.ipr
