@@ -63,7 +63,7 @@ public class BeaconHaloRenderer {
         RenderSystem.depthMask(true);
 
         double radius = getRadiusGolden(haloIndex);
-        for (int j = 0; j < segments; j++) {
+        for (int j = 0; j <= segments; j++) {
             double angle = 2.0 * Math.PI * j / segments;
             double x = radius * Math.cos(angle);
             double z = radius * Math.sin(angle);
