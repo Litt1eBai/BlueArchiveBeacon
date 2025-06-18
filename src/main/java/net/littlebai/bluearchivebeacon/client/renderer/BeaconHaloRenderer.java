@@ -1,4 +1,4 @@
-package net.littlebai.bluearchivebeacon.renderer;
+package net.littlebai.bluearchivebeacon.client.renderer;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;

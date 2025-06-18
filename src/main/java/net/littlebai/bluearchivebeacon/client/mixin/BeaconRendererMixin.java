@@ -1,7 +1,7 @@
-package net.littlebai.bluearchivebeacon.mixin;
+package net.littlebai.bluearchivebeacon.client.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.littlebai.bluearchivebeacon.renderer.BeaconHaloRenderer;
+import net.littlebai.bluearchivebeacon.client.renderer.BeaconHaloRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BeaconRenderer;
 import net.minecraft.world.level.block.entity.BeaconBlockEntity;

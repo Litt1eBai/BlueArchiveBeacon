@@ -1,12 +1,17 @@
 {
+    "configuration.bluearchivebeacon.title": "Blue Archive Beacon Configuration",
+    "bluearchivebeacon.configuration.general": "General Settings",
+    "bluearchivebeacon.configuration.color": "Color Settings",
+    "bluearchivebeacon.configuration.appearance": "Appearance Settings",
+    
     "configuration.bluearchivebeacon.enableRendering": "Enable Rendering",
     "configuration.bluearchivebeacon.enableRendering.comment": "Whether to enable halo rendering",
     
     "configuration.bluearchivebeacon.haloColorMode": "Halo Color Mode",
     "configuration.bluearchivebeacon.haloColorMode.comment": "Halo color mode",
-    "configuration.bluearchivebeacon.haloColorMode.ba_style": "Blue Archive Style",
-    "configuration.bluearchivebeacon.haloColorMode.fixed": "Fixed Color",
-    "configuration.bluearchivebeacon.haloColorMode.follow_beacon": "Follow Beacon Beam",
+    "enum.bluearchivebeacon.halocolormode.ba_style": "Blue Archive Style",
+    "enum.bluearchivebeacon.halocolormode.fixed": "Fixed Color",
+    "enum.bluearchivebeacon.halocolormode.follow_beacon": "Follow Beacon Beam",
     
     "configuration.bluearchivebeacon.fixedColorRed": "Fixed Color Red",
     "configuration.bluearchivebeacon.fixedColorRed.comment": "Red component for fixed color mode (0-255)",
@@ -19,9 +24,9 @@
     
     "configuration.bluearchivebeacon.haloCountMode": "Halo Count Mode",
     "configuration.bluearchivebeacon.haloCountMode.comment": "Halo count mode",
-    "configuration.bluearchivebeacon.haloCountMode.fixed": "Fixed Count",
-    "configuration.bluearchivebeacon.haloCountMode.custom": "Custom Count",
-    "configuration.bluearchivebeacon.haloCountMode.follow_level": "Follow Beacon Level",
+    "enum.bluearchivebeacon.halocountmode.fixed": "Fixed Count",
+    "enum.bluearchivebeacon.halocountmode.custom": "Custom Count",
+    "enum.bluearchivebeacon.halocountmode.follow_level": "Follow Beacon Level",
     
     "configuration.bluearchivebeacon.customHaloCount": "Custom Halo Count",
     "configuration.bluearchivebeacon.customHaloCount.comment": "Number of halos for custom mode",
