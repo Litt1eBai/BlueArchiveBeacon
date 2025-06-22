@@ -2,12 +2,14 @@
   "required": true,
   "minVersion": "0.8",
   "package": "net.littlebai.bluearchivebeacon.client.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_17",
+  "plugin": "net.littlebai.bluearchivebeacon.client.mixin.BaBeaconMixinPlugin",
   "refmap": "bluearchivebeacon.refmap.json",
   "mixins": [
   ],
   "client": [
-    "BeaconRendererMixin"
+    "BeaconRendererMixin",
+    "DistantHorizonsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
