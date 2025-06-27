@@ -24,13 +24,9 @@ public class BeaconHaloRenderer {
     private BeaconHaloRenderer() {}
 
     public static void drawBeaconHalo(BeaconBlockEntity blockEntity,
-                                      float partialTick,
                                       PoseStack poseStack,
-                                      MultiBufferSource bufferSource,
-                                      int packedLight,
-                                      int packedOverlay) {
-        Vec3 circleCenter = new Vec3(blockEntity.getBlockPos().getX(), 256, blockEntity.getBlockPos().getZ());
-        Vec3 cameraPos = Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();
+                                      Vec3 cameraPos) {
+        Vec3 circleCenter = new Vec3(blockEntity.getBlockPos().getX(), 512, blockEntity.getBlockPos().getZ());
 
         // 计算颜色
         // 根据游戏时间计算动态颜色
@@ -77,7 +73,7 @@ public class BeaconHaloRenderer {
             double x = radius * Math.cos(angle);
             double z = radius * Math.sin(angle);
 
-            Vector4f worldPos = new Vector4f((float) x, (float) circleCenter.y, (float) z, 1.0f);
+            Vector4f worldPos = new Vector4f((float) x, 0, (float) z, 1.0f);
             worldPos.mul(poseStack.last().pose());
 
             buffer.addVertex(worldPos.x, worldPos.y, worldPos.z).setColor(red, green, blue, alpha);

@@ -2,9 +2,11 @@ package net.littlebai.bluearchivebeacon.client.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.littlebai.bluearchivebeacon.client.renderer.BeaconHaloRenderer;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BeaconRenderer;
 import net.minecraft.world.level.block.entity.BeaconBlockEntity;
+import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -23,9 +25,11 @@ public class BeaconRendererMixin {
                         CallbackInfo ci){
 
         boolean shouldRenderHalo = true;
-        
+
+        Vec3 cameraPos = Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();
+
         if (shouldRenderHalo) {
-            BeaconHaloRenderer.drawBeaconHalo(blockEntity, partialTick, poseStack, bufferSource, packedLight, packedOverlay);
+            BeaconHaloRenderer.drawBeaconHalo(blockEntity, poseStack, cameraPos);
         }
     }
 

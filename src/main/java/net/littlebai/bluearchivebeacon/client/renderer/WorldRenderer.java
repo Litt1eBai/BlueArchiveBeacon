@@ -9,7 +9,9 @@ import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix4f;
 
 public class WorldRenderer {
-    
+
+    private Vec3 cameraPos;
+
     public static final WorldRenderer INSTANCE = new WorldRenderer();
     
     private WorldRenderer() {}
@@ -21,31 +23,32 @@ public class WorldRenderer {
             return;
         }
         
-        Vec3 cameraPos = camera.getPosition();
+        cameraPos = camera.getPosition();
         
         for (BeaconBlockEntity beacon : BeaconTracker.getAllBeacons()) {
             if (beacon != null && shouldRenderBeacon(beacon, cameraPos)) {
-                renderBeaconHalo(beacon, poseStack, cameraPos, tickDelta.getGameTimeDeltaTicks());
+                BeaconHaloRenderer.drawBeaconHalo(beacon, poseStack, cameraPos);
+//                renderBeaconHalo(beacon, poseStack, cameraPos, tickDelta.getGameTimeDeltaTicks());
             }
         }
     }
 
     private boolean shouldRenderBeacon(BeaconBlockEntity beacon, Vec3 cameraPos) {
         double distance = cameraPos.distanceTo(Vec3.atCenterOf(beacon.getBlockPos()));
-        double maxRenderDistance = 2048;
+        double maxRenderDistance = 4096;
         
         return distance <= maxRenderDistance;
     }
     
 
-    private void renderBeaconHalo(BeaconBlockEntity beacon, PoseStack poseStack, Vec3 cameraPos, float partialTick) {
-        poseStack.pushPose();
-        
-        BeaconHaloRenderer.drawBeaconHalo(beacon, partialTick, poseStack,
-            Minecraft.getInstance().renderBuffers().bufferSource(), 
-            15728880,
-            10);
-            
-        poseStack.popPose();
-    }
+//    private void renderBeaconHalo(BeaconBlockEntity beacon, PoseStack poseStack, Vec3 cameraPos, float partialTick) {
+//        poseStack.pushPose();
+//
+//        BeaconHaloRenderer.drawBeaconHalo(beacon, partialTick, poseStack,
+//            Minecraft.getInstance().renderBuffers().bufferSource(),
+//            15728880,
+//            10);
+//
+//        poseStack.popPose();
+//    }
 } 
