@@ -2,27 +2,33 @@ package net.littlebai.bluearchivebeacon.client.renderer;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
+import net.minecraft.client.Camera;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.entity.BeaconBlockEntity;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.Vec3;
+import org.joml.Matrix4f;
 import org.joml.Vector4f;
 import org.lwjgl.opengl.GL11;
 
-import java.awt.*;
+import java.util.List;
 
-public class BeaconHaloRenderHandler {
+public class BeaconHaloRenderer {
 
-    public static void renderBeaconHalo(BeaconBlockEntity blockEntity,
-                                       float partialTick,
-                                       PoseStack poseStack,
-                                       MultiBufferSource bufferSource,
-                                       int packedLight,
-                                       int packedOverlay) {
+    private BeaconHaloRenderer() {}
+
+    public static void drawBeaconHalo(BeaconBlockEntity blockEntity,
+                                      float partialTick,
+                                      PoseStack poseStack,
+                                      MultiBufferSource bufferSource,
+                                      int packedLight,
+                                      int packedOverlay) {
         Vec3 circleCenter = new Vec3(blockEntity.getBlockPos().getX(), 256, blockEntity.getBlockPos().getZ());
         Vec3 cameraPos = Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();
 
@@ -43,13 +49,13 @@ public class BeaconHaloRenderHandler {
         int segments = 240;
 
         for (int i = 0; i < haloCount; i++) {
-            renderSingleHalo(poseStack, cameraPos, circleCenter, i, segments, red, green, blue, alpha);
+            drawSingleHalo(poseStack, cameraPos, circleCenter, i, segments, red, green, blue, alpha);
         }
     }
 
-    private static void renderSingleHalo(PoseStack poseStack, Vec3 cameraPos, Vec3 circleCenter, 
-                                        int haloIndex, int segments, 
-                                        float red, float green, float blue, float alpha) {
+    private static void drawSingleHalo(PoseStack poseStack, Vec3 cameraPos, Vec3 circleCenter,
+                                       int haloIndex, int segments,
+                                       float red, float green, float blue, float alpha) {
         Tesselator tesselator = Tesselator.getInstance();
         BufferBuilder buffer = tesselator.begin(VertexFormat.Mode.DEBUG_LINE_STRIP, DefaultVertexFormat.POSITION_COLOR);
 

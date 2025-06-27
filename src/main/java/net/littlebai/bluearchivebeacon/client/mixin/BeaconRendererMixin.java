@@ -1,7 +1,7 @@
 package net.littlebai.bluearchivebeacon.client.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.littlebai.bluearchivebeacon.client.renderer.BeaconHaloRenderHandler;
+import net.littlebai.bluearchivebeacon.client.renderer.BeaconHaloRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BeaconRenderer;
 import net.minecraft.world.level.block.entity.BeaconBlockEntity;
@@ -25,7 +25,7 @@ public class BeaconRendererMixin {
         boolean shouldRenderHalo = true;
         
         if (shouldRenderHalo) {
-            BeaconHaloRenderHandler.renderBeaconHalo(blockEntity, partialTick, poseStack, bufferSource, packedLight, packedOverlay);
+            BeaconHaloRenderer.drawBeaconHalo(blockEntity, partialTick, poseStack, bufferSource, packedLight, packedOverlay);
         }
     }
 
